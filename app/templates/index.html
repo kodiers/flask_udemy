@@ -57,6 +57,25 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>% Change 1h</th>
+                    </tr>
+                    <tbody class="">
+                        {% for item in process_coins %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item["name"] }}</td>
+                                <td>{{ item["price_usd"] }}</td>
+                                <td>{{ item["percent_change_1h"] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="col-md-1"></div>
         </div>
