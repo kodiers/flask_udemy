@@ -13,8 +13,8 @@ def get_data(query_string):
     return json.loads(data.decode('utf-8'))
 
 
-def process():
-    data = get_data('/v1/ticker/bitcoin/')
+def process(entered_coin):
+    data = get_data('/v1/ticker/{}/'.format(entered_coin))
     return data[0]
 
 

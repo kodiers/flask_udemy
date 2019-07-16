@@ -40,7 +40,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <span class="boxValue">
-                                    {{ data["price_usd"] }}
+                                    {{ data["price_usd"] }}$
                                 </span>
                                 <div>Price</div>
                             </div>
@@ -51,7 +51,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <span class="boxValue">
-                                    {{ data["percent_change_24h"] }}
+                                    {{ data["percent_change_24h"] }}%
                                 </span>
                                 <div>24 h % change</div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <span class="boxValue">
-                                    {{ data["percent_change_7d"] }}
+                                    {{ data["percent_change_7d"] }}%
                                 </span>
                                 <div>7 days % change</div>
                             </div>
@@ -76,15 +76,15 @@
                         <th>Name</th>
                         <th>Price</th>
                         <th>% Change 1h</th>
-                        <th>Over 40?</th>
+                        <th>Over 40$?</th>
                     </tr>
                     <tbody class="">
                         {% for item in process_coins %}
                             <tr>
                                 <td>{{ loop.index }}</td>
                                 <td>{{ item["name"] }}</td>
-                                <td>{{ item["price_usd"] }}</td>
-                                <td>{{ item["percent_change_1h"] }}</td>
+                                <td>{{ item["price_usd"] }}$</td>
+                                <td>{{ item["percent_change_1h"] }}%</td>
                                 <td>{{ item["isover40"] }}</td>
                             </tr>
                         {% endfor %}
