@@ -1,6 +1,7 @@
 import json
 import http.client
 import ssl
+from sqlitedict import SqliteDict
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -23,9 +24,21 @@ def calculate_coin(price_usd):
 
 
 def process_coins():
-    data = get_data('/v1/ticker/?limit=10')
+    coins_db = SqliteDict('./coins.db', autocommit=True)
+    data = coins_db['coin_data']
+    coins_db.close()
     all_coins = []
     for coin in data:
         coin["isover40"] = calculate_coin(coin['price_usd'])
         all_coins.append(coin)
     return all_coins
+
+
+def set_coins_json():
+  coins = SqliteDict('./coins.db', autocommit=True)
+  coins['coin_data'] = get_data('/v1/ticker/?limit=10')
+  coins.close()
+
+
+if __name__ == '__main__':
+    set_coins_json()
